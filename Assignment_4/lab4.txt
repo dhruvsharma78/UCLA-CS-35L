@@ -1,0 +1,89 @@
+Dhruv Sharma
+605-082-988
+
+1. I downloaded the tarball for coreutils and extracted it using the tar command
+   with the -x option to extract, the -z option to filter through gzip and the
+   -f option to use the archive file for extraction
+
+2. Next, I created a temporary directory to install coreutils into and ran the
+   configure script with the --prefix flag to the directory where I wanted to
+   install this version of coreutils
+
+3. I ran the make script to compile and build coreutils. The compilation fails.
+   The reason is: The futimens and tee functions have been defined multiple
+   times and therefore compilation fails.
+
+4. The patch file changes the function names in some of the files and also the
+   corresponding calls to them. This fixes the multiple definitions error.
+
+5. I downloaded the patch file and stored it in the same directory as the
+   extracted coreutils. I applied the patch using the patch command with the
+   -p0 option.
+
+   The patch was applied successfuly
+
+6. I ran the make and make install commands again to build and install coreutils
+
+7. I created the temp directory and the files needed to test ls just like it
+   was given on the class website:
+       https://web.cs.ucla.edu/classes/spring19/cs35L/assign/assign4.html
+
+8. I ran the ls command (the one that was just built) on the temp folder.
+
+   The ls command reads the date correctly, however it places it in the wrong
+   position when sorting.
+
+9. I looked throught the source code for the ls command in
+   coreutils-with-bug/src/ls.c and saw that the files were sorted by the
+   sort_files function. I ran gdb on ls and set a breakpoint at this function.
+
+10. The function calls qsort with the compare function as 'func'
+    In this case, func was a pointer to compare_mtime, which in turn calls
+    cmp_mtime which then calls timespec_cmp. The timespec_cmp function is
+    where the problem occurs.
+
+11. The function returns the correct value for the files created on
+    'current time' but an incorrect value for the very old file.
+    This is because the timespec_cmp function uses regular subtraction to see
+    if a timestamp is greater than the other.
+
+    The issue with this is that if time value 1 is extremely an extremely small
+    negative value (like 1918), and value 2 is large enough positive value,
+    the difference could overflow to a large positive value, thereby making
+    it seem like value 1 was GREATER than value 2.
+
+    This approach to finding the greater time is wrong in this case
+
+12. I changed this function to use the > and < operators to see if a number is
+    greater/less than the other. These operators have the necessary checks in
+    place to ensure that underflows don't affect the result.
+
+13. I copied the timespec.h file and made these edits and also updated the
+    changelog to log all the changes made to the file
+
+14. I then used the diff command with the new modified file and old timespec.h
+    file using the -u option and stored the output in lab4.diff. Then I moved the
+    patch file to coreutils-with-bug/ and applied it using the patch -p1 command
+
+15. I ran the autoreconf command and the make and make install command to reflect
+    the changes made
+
+16. Upon testing in the same temp directory as before, the problem has now been fixed
+
+17. On running the same process in a directory under the home directory.
+
+    In this case, a different error popped up. The 1918 file is shown with a
+    modification time of 2054. However, it is displayed at the top, so it is
+    technically in the correct sorted problem.
+
+    The issue this time is that the date itself (which is a very high negative
+    value) is underflowing to a massive positive value because the file system
+    of the home directory uses less bytes to store the date, and therefore the
+    date itself underflows to a positive value (2054) in this case.
+
+    This issue did not exist on the temp directory as that temp directory
+    is on a different machine that uses a different file system that supports
+    a much larger range of dates.
+    
+    This isn't necessarily a problem with the installed ls command on seasnet,
+    but just the filesystem

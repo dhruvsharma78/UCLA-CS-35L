@@ -1,0 +1,36 @@
+#! /usr/bin/sh
+
+#Remove ?
+tr -d "?" |
+
+#Remove ,
+tr -d "," |
+
+#Change '
+tr "\`" "\'" |
+
+#Convert to lowercase
+tr '[:upper:]' '[:lower:]' |
+
+#Get table values (Hawaiian/English words)
+grep '</td>'$ |
+
+#Remove HTML stuff
+sed 's/<[^>]*>//g' |
+
+#Get odd numberes lines that contain Hawaiian words
+sed 'n; d' |
+
+#Separate multiple words onto individual lines
+tr -s ' ' '[\n*]' |
+
+#Keep lines that have only Hawaiian characters
+#grep -vi "[^pk'mnwlhaeiou]" |
+grep -E "^[pk'mnwlhaeiou]+$" |
+
+
+#Sort list
+sort -u |
+
+#Remove blank lines
+grep .

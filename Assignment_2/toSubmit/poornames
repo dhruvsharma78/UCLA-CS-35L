@@ -1,0 +1,94 @@
+#! /usr/bin/sh
+
+#Allow hidden files to be read
+shopt -s dotglob
+
+#######################################################################
+## Functions                                                         ##
+#######################################################################
+
+usage(){ printf "\nUsage: ./poornames [directoryName]\n\n" 1>&2; }
+
+alreadyExists(){
+    toCheck=$(echo $1 | tr '[:upper:]' '[:lower:]')
+    shift
+    tempArr=("$@")
+    for item in $@; do
+	if [[ "$toCheck" == "$item" ]]; then
+	    return 0
+	fi
+    done
+    return 1
+}
+
+checker(){
+    declare -a validNames
+    
+    for x in $1/*; do
+	if [[ ! $x =~ $1/[_A-Za-z][_A-Za-z\.\-]{0,13}$ ]] ; then
+	    printf "$x\n"
+	elif alreadyExists $x ${validNames[@]} ; then
+	    printf "$x\n"
+	else
+	    validNames+=($(echo $x | tr 'A-Z' 'a-z'))
+	    
+	    #If valid and is a directory
+	    #Follow directory and run checker on it
+	    if [ -d $x ]; then
+		if [ -r $x ]; then
+		    checker $x
+		else
+		    printf "ERROR: Cannot read $x : Permission Denied\n" 1>&2
+		    printf "\tRead permissions required...\n" 1>&2
+	        fi
+	    fi   
+	fi
+    done
+}
+                                                                                                                                                                
+#######################################################################
+## Check arguments...                                                ##
+#######################################################################
+
+#If no arguments, make it current directory
+#If . make it current directory
+if [ $# -eq 0 ]; then
+    dir=`pwd`
+elif [ $1 == "." ]; then
+    dir=`pwd`
+else
+    dir=$1
+fi
+
+
+if [[ $dir =~ /$ ]]; then
+    dir=$(echo $dir | sed s/.$//)
+fi
+
+
+#Check if not more than 1 argument
+if [ $# -gt 1 ]; then
+    printf "ERROR: Too mamy arguments\n" 1>&2
+    usage
+    exit 1
+fi
+
+#Check if argument starts with -
+if [ ${dir:0:1} = '-' ]; then
+    printf "ERROR: Argument cannot have \'-\'\n" 1>&2
+    exit 2
+fi
+
+#Check if argument is a directory
+if [ ! -d $dir ]; then
+    printf "ERROR: $dir is NOT a directory\n" 1>&2
+    exit 3
+fi
+
+#######################################################################
+## Run file name checking function...                                ##
+#######################################################################
+
+checker $dir
+
+#######################################################################

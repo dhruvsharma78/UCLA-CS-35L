@@ -1,0 +1,571 @@
+1. man -k <word>
+   Shell commands used:
+   $ man man
+   # Read the man page to find the -k option that allows searching of the description
+
+2. mv is located at:
+      /usr/bin/mv
+      /usr/local/cs/bin/mv
+   sh is located at:
+      /usr/bin/sh
+
+   Shell commands used:
+   $ whereis mv
+   $ whereis sh
+   # Some of the search results were actually man pages so those were ignored
+
+3. /usr/bin/tr
+   /usr/bin/ar
+   /usr/bin/pr
+   /usr/local/cs/bin/pr
+   /usr/local/cs/bin/tr
+
+   Shell commands used:
+   $ man find
+   # Found the -executable option in the man pages and the -name option. The ? wildcard was taught during lecture
+   $ find /usr/bin -executable -name ?r
+   $ find /usr/local/cs/bin -executable -name ?r
+
+4. /usr/local/cs/emacs-26.1/bin/emacs-26.1
+
+   Shell commands used:
+   $ which emacs
+   $ realpath /usr/local/cs/bin/emacs
+   # The given hints used the readlink command, however, on reading the man page for readlink,
+   # I understood that the realpath command would give the full path and therefore used that command
+														
+5. The version number of the /usr/bin/gcc is 4.8.5
+   The version number of the plain gcc is 8.3.0
+
+   Shell commands used:
+   $ gcc --version
+   $ /usr/bin/gcc --version
+   # Read the man page for gcc to find the --version option
+
+
+6. The chmod u+sx command gives the user execution permissions on the file and when because of the
+   's' bit, when the user executes the file, he gets the permissions of the owner of that file
+
+   The o-w removes write permissions from 'other' users
+
+   Shell commands used:
+   $ man chmod
+   # Read the man page to understand the meanings of the symbols
+
+7. /usr/local/cs/
+   /usr/local/cs/src/coreutils
+   /usr/local/cs/src/coreutils/RCS
+   /usr/local/cs/share/info
+   /usr/local/cs/share/man/man1
+   /usr/local/cs/bin
+   /usr/local/cs/coreutils-8.31
+   /usr/local/cs/coreutils-8.31/share
+   /usr/local/cs/coreutils-8.31/share/locale
+   /usr/local/cs/coreutils-8.31/share/locale/af
+   /usr/local/cs/coreutils-8.31/share/locale/af/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/af/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/be
+   /usr/local/cs/coreutils-8.31/share/locale/be/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/be/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/bg
+   /usr/local/cs/coreutils-8.31/share/locale/bg/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/bg/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ca
+   /usr/local/cs/coreutils-8.31/share/locale/ca/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ca/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/cs
+   /usr/local/cs/coreutils-8.31/share/locale/cs/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/cs/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/da
+   /usr/local/cs/coreutils-8.31/share/locale/da/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/da/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/de
+   /usr/local/cs/coreutils-8.31/share/locale/de/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/de/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/el
+   /usr/local/cs/coreutils-8.31/share/locale/el/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/el/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/eo
+   /usr/local/cs/coreutils-8.31/share/locale/eo/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/eo/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/es
+   /usr/local/cs/coreutils-8.31/share/locale/es/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/es/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/et
+   /usr/local/cs/coreutils-8.31/share/locale/et/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/et/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/eu
+   /usr/local/cs/coreutils-8.31/share/locale/eu/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/eu/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/fi
+   /usr/local/cs/coreutils-8.31/share/locale/fi/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/fi/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/fr
+   /usr/local/cs/coreutils-8.31/share/locale/fr/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/fr/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ga
+   /usr/local/cs/coreutils-8.31/share/locale/ga/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ga/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/gl
+   /usr/local/cs/coreutils-8.31/share/locale/gl/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/gl/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/hr
+   /usr/local/cs/coreutils-8.31/share/locale/hr/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/hr/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/hu
+   /usr/local/cs/coreutils-8.31/share/locale/hu/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/hu/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ia
+   /usr/local/cs/coreutils-8.31/share/locale/ia/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ia/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/id
+   /usr/local/cs/coreutils-8.31/share/locale/id/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/id/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/it
+   /usr/local/cs/coreutils-8.31/share/locale/it/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/it/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ja
+   /usr/local/cs/coreutils-8.31/share/locale/ja/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ja/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/kk
+   /usr/local/cs/coreutils-8.31/share/locale/kk/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/kk/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ko
+   /usr/local/cs/coreutils-8.31/share/locale/ko/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ko/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/lg
+   /usr/local/cs/coreutils-8.31/share/locale/lg/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/lg/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/lt
+   /usr/local/cs/coreutils-8.31/share/locale/lt/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/lt/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ms
+   /usr/local/cs/coreutils-8.31/share/locale/ms/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ms/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/nb
+   /usr/local/cs/coreutils-8.31/share/locale/nb/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/nb/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/nl
+   /usr/local/cs/coreutils-8.31/share/locale/nl/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/nl/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/pl
+   /usr/local/cs/coreutils-8.31/share/locale/pl/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/pl/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/pt
+   /usr/local/cs/coreutils-8.31/share/locale/pt/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/pt/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/pt_BR
+   /usr/local/cs/coreutils-8.31/share/locale/pt_BR/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/pt_BR/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ro
+   /usr/local/cs/coreutils-8.31/share/locale/ro/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ro/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/ru
+   /usr/local/cs/coreutils-8.31/share/locale/ru/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/ru/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/sk
+   /usr/local/cs/coreutils-8.31/share/locale/sk/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/sk/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/sl
+   /usr/local/cs/coreutils-8.31/share/locale/sl/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/sl/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/sr
+   /usr/local/cs/coreutils-8.31/share/locale/sr/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/sr/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/sv
+   /usr/local/cs/coreutils-8.31/share/locale/sv/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/sv/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/tr
+   /usr/local/cs/coreutils-8.31/share/locale/tr/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/tr/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/uk
+   /usr/local/cs/coreutils-8.31/share/locale/uk/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/uk/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/vi
+   /usr/local/cs/coreutils-8.31/share/locale/vi/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/vi/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/zh_CN
+   /usr/local/cs/coreutils-8.31/share/locale/zh_CN/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/zh_CN/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/locale/zh_TW
+   /usr/local/cs/coreutils-8.31/share/locale/zh_TW/LC_MESSAGES
+   /usr/local/cs/coreutils-8.31/share/locale/zh_TW/LC_TIME
+   /usr/local/cs/coreutils-8.31/share/info
+   /usr/local/cs/coreutils-8.31/share/man
+   /usr/local/cs/coreutils-8.31/share/man/man1
+   /usr/local/cs/coreutils-8.31/bin
+   /usr/local/cs/coreutils-8.31/libexec
+   /usr/local/cs/coreutils-8.31/libexec/coreutils
+
+   Shell commands used:
+
+   $ man find
+
+   # Read the man page to find the -type option that will allow me to search for only directories
+   # Also found the -mtime option to find directories modified before a certain time
+   # The description of the -atime option explained the rounding process used and therefore, even
+   # though I needed files modified less than 28 days ago (4 weeks), I used 27 as the argument since
+   # this would not give me files modified 28-28.99 days ago
+
+   $ find /usr/local/cs/ -type d -mtime -27
+
+8. /usr/bin/pmiostat
+   /usr/bin/xzfgrep
+   /usr/bin/updmap
+   /usr/bin/systemd-coredumpctl
+   /usr/bin/rpmquery
+   /usr/bin/links
+   /usr/bin/rmic
+   /usr/bin/jarsigner
+   /usr/bin/parec
+   /usr/bin/nc
+   /usr/bin/inimf
+   /usr/bin/gimp
+   /usr/bin/pnmtofits
+   /usr/bin/bunzip2
+   /usr/bin/arecord
+   /usr/bin/el5-rpmlint
+   /usr/bin/ppmtouil
+   /usr/bin/pinentry-gtk
+   /usr/bin/lastb
+   /usr/bin/gnroff
+   /usr/bin/unxz
+   /usr/bin/systemd-loginctl
+   /usr/bin/flex++
+   /usr/bin/javadoc
+   /usr/bin/paplay
+   /usr/bin/pack200
+   /usr/bin/slogin
+   /usr/bin/python2-config
+   /usr/bin/pnmtopnm
+   /usr/bin/rpmverify
+   /usr/bin/kdesu
+   /usr/bin/dviluatex
+   /usr/bin/jjs
+   /usr/bin/X
+   /usr/bin/javap
+   /usr/bin/gnatgcc
+   /usr/bin/gtroff
+   /usr/bin/atq
+   /usr/bin/jadetex
+   /usr/bin/texhash
+   /usr/bin/unix2mac
+   /usr/bin/texluac
+   /usr/bin/zsoelim
+   /usr/bin/pstack
+   /usr/bin/vimdiff
+   /usr/bin/tclsh
+   /usr/bin/psfaddtable
+   /usr/bin/servertool
+   /usr/bin/gemtopbm
+   /usr/bin/ebb
+   /usr/bin/psfgettable
+   /usr/bin/bzcat
+   /usr/bin/pnmcomp
+   /usr/bin/sgmlnorm
+   /usr/bin/pdfetex
+   /usr/bin/appletviewer
+   /usr/bin/spent
+   /usr/bin/el4-rpmlint
+   /usr/bin/gimp-console
+   /usr/bin/pnmenlarge
+   /usr/bin/dvi2fax
+   /usr/bin/wish
+   /usr/bin/combinediff
+   /usr/bin/kpsepath
+   /usr/bin/flipdiff
+   /usr/bin/jstat
+   /usr/bin/htmex
+   /usr/bin/apropos
+   /usr/bin/latrace-ctl
+   /usr/bin/pnmtotiff
+   /usr/bin/icontopbm
+   /usr/bin/byacc
+   /usr/bin/passwd
+   /usr/bin/httex
+   /usr/bin/rvi
+   /usr/bin/htcontext
+   /usr/bin/jmap
+   /usr/bin/db2rtf
+   /usr/bin/nisdomainname
+   /usr/bin/gpgv
+   /usr/bin/pdflatex
+   /usr/bin/linux32
+   /usr/bin/schemagen
+   /usr/bin/psfstriptable
+   /usr/bin/rksh
+   /usr/bin/dvired
+   /usr/bin/ppmquantall
+   /usr/bin/mail
+   /usr/bin/mac2unix
+   /usr/bin/dvipdfm
+   /usr/bin/Mail
+   /usr/bin/pdfxmltex
+   /usr/bin/pdfjadetex
+   /usr/bin/pnmdepth
+   /usr/bin/fmtutil
+   /usr/bin/rnano
+   /usr/bin/parecord
+   /usr/bin/rhn_register
+   /usr/bin/xzcmp
+   /usr/bin/gnome-keyring
+   /usr/bin/allneeded
+   /usr/bin/lz4cat
+   /usr/bin/bzless
+   /usr/bin/db2ps
+   /usr/bin/ksh
+   /usr/bin/mptopdf
+   /usr/bin/pnmscale
+   /usr/bin/db2dvi
+   /usr/bin/fmtutil-sys
+   /usr/bin/open
+   /usr/bin/latex
+   /usr/bin/jps
+   /usr/bin/setup-nsssysinit
+   /usr/bin/lex
+   /usr/bin/lp
+   /usr/bin/ht
+   /usr/bin/texlua
+   /usr/bin/pnmnoraw
+   /usr/bin/policyeditor
+   /usr/bin/kpsexpand
+   /usr/bin/bashbug
+   /usr/bin/sh
+   /usr/bin/pgmedge
+   /usr/bin/phar
+   /usr/bin/extractbb
+   /usr/bin/traceroute6
+   /usr/bin/ypdomainname
+   /usr/bin/grepdiff
+   /usr/bin/jstatd
+   /usr/bin/htxelatex
+   /usr/bin/newaliases.postfix
+   /usr/bin/i386
+   /usr/bin/dvigif
+   /usr/bin/pnmarith
+   /usr/bin/xzcat
+   /usr/bin/rmiregistry
+   /usr/bin/pstree.x11
+   /usr/bin/python2
+   /usr/bin/dvdrecord
+   /usr/bin/kpsewhere
+   /usr/bin/newaliases
+   /usr/bin/sgml2xml
+   /usr/bin/pgmnorm
+   /usr/bin/mktexfmt
+   /usr/bin/python
+   /usr/bin/pamrgbatopng
+   /usr/bin/etags
+   /usr/bin/linux64
+   /usr/bin/pax
+   /usr/bin/unpack200
+   /usr/bin/iptables-xml
+   /usr/bin/nmtui-edit
+   /usr/bin/ppmtojpeg
+   /usr/bin/dvilualatex
+   /usr/bin/setup
+   /usr/bin/gsoelim
+   /usr/bin/cdrecord
+   /usr/bin/reset
+   /usr/bin/jar
+   /usr/bin/ping6
+   /usr/bin/htxetex
+   /usr/bin/texconfig-sys
+   /usr/bin/cancel
+   /usr/bin/jade
+   /usr/bin/jstack
+   /usr/bin/nail
+   /usr/bin/orbd
+   /usr/bin/nmtui-connect
+   /usr/bin/db2pdf
+   /usr/bin/texconfig
+   /usr/bin/wsgen
+   /usr/bin/pgmoil
+   /usr/bin/updmap-sys
+   /usr/bin/itweb-settings
+   /usr/bin/pbmtoicon
+   /usr/bin/emacs
+   /usr/bin/lpr
+   /usr/bin/xmltex
+   /usr/bin/pngtopnm
+   /usr/bin/allcm
+   /usr/bin/desktop-file-edit
+   /usr/bin/jrunscript
+   /usr/bin/mkisofs
+   /usr/bin/pmevent
+   /usr/bin/allec
+   /usr/bin/jhat
+   /usr/bin/cc
+   /usr/bin/xjc
+   /usr/bin/atrm
+   /usr/bin/etex
+   /usr/bin/spam
+   /usr/bin/htlatex
+   /usr/bin/awk
+   /usr/bin/lpstat
+   /usr/bin/ghostscript
+   /usr/bin/rmid
+   /usr/bin/rmail
+   /usr/bin/ex
+   /usr/bin/lsdiff
+   /usr/bin/jconsole
+   /usr/bin/texlinks
+   /usr/bin/csh
+   /usr/bin/domainname
+   /usr/bin/hwloc-ls
+   /usr/bin/rview
+   /usr/bin/gpic
+   /usr/bin/lprm
+   /usr/bin/subscription-manager
+   /usr/bin/extcheck
+   /usr/bin/ppmtotga
+   /usr/bin/x86_64
+   /usr/bin/sg
+   /usr/bin/pnmfile
+   /usr/bin/pnminterp
+   /usr/bin/lualatex
+   /usr/bin/mk4ht
+   /usr/bin/f95
+   /usr/bin/mkluatexfontdb
+   /usr/bin/mkhybrid
+   /usr/bin/gneqn
+   /usr/bin/initex
+   /usr/bin/mysql_config
+   /usr/bin/serialver
+   /usr/bin/gpg
+   /usr/bin/keytool
+   /usr/bin/jdb
+   /usr/bin/pcp2csv
+   /usr/bin/captoinfo
+   /usr/bin/policytool
+   /usr/bin/thumbpdf
+   /usr/bin/pmcollectl
+   /usr/bin/java
+   /usr/bin/f2py.numpy
+   /usr/bin/native2ascii
+   /usr/bin/gtar
+   /usr/bin/ld
+   /usr/bin/pnmsplit
+   /usr/bin/kpsetool
+   /usr/bin/dnsdomainname
+   /usr/bin/bzcmp
+   /usr/bin/jsadebugd
+   /usr/bin/javaws
+   /usr/bin/infotocap
+   /usr/bin/simpdftex
+   /usr/bin/nmtui-hostname
+   /usr/bin/gtbl
+   /usr/bin/xzegrep
+   /usr/bin/view
+   /usr/bin/rvim
+   /usr/bin/python-config
+   /usr/bin/makeinfo
+   /usr/bin/ControlPanel
+   /usr/bin/jinfo
+   /usr/bin/unlz4
+   /usr/bin/nsgmls
+   /usr/bin/jdeps
+   /usr/bin/readcd
+   /usr/bin/nfs4_editfacl
+   /usr/bin/pango-querymodules-64
+   /usr/bin/javac
+   /usr/bin/pgmslice
+   /usr/bin/httexi
+   /usr/bin/gjs
+   /usr/bin/bmptoppm
+   /usr/bin/tnameserv
+   /usr/bin/pamon
+   /usr/bin/wsimport
+   /usr/bin/mailq
+   /usr/bin/texconfig-dialog
+   /usr/bin/libpng-config
+   /usr/bin/gmake
+   /usr/bin/javah
+   /usr/bin/lpq
+   /usr/bin/idlj
+   /usr/bin/chsh
+   /usr/bin/jcmd
+   /usr/bin/pnmcut
+   /usr/bin/geqn
+   /usr/bin/ppmnorm
+   /usr/bin/mailq.postfix
+
+   There are 280 symbolic links
+
+   Shell commands used:
+
+   $ where find
+   $ man find
+
+   # found the -l option to search for symbolic links
+
+   $ find /usr/bin/ -type l > results.txt
+   $ emacs results.txt
+
+   # Navigated to bottom of file by using M-e and reading line number to find number of links
+
+9. librom1394.so.0.3.0 is the oldest regular file
+
+   Shell commands used:
+
+   $ man ls
+   $ ls /usr/lib64/ -lt
+   # The -t option ordered the files by last modification time with the oldest files at the bottom
+   # The file with a '-' as the first character in the permissions in the long view would be a regular file
+   # So the regular file that was the oldest was found
+
+10. As specified in the man page, the data for this command is derived 'based on the settings of the environment variables that control the
+    locale'
+
+    Shell commands used:
+    $ man locale
+
+11. downcase-dwim
+    downcase-region
+    downcase-word
+
+    emacs commands used:
+
+    C-h a
+    d o w n c a s e Enter
+
+12. C-M-r : isearch-backward-regexp : Do incremental search backward for regular expression
+    C-M-s : isearch-forwars-regexp  : Do incremental search forward for regular expression
+    C-M-t : transpose-sexps         : Like C-t (transpose-chars), but applies to sexps.
+    C-M-u : backwards-up-list       : Move backward out of one level of parentheses.
+    C-M-v : scroll-other-window     : Scroll next window upward ARG lines; or near full screen if no ARG
+
+    emacs commands used:
+
+    C-h ? To get list of help options
+    b     To get help for all key bindings
+    C-x o To switch to help window and scroll through to find C-M-r
+    Enter to follow hyperlinks to descriptions of commands
+
+13. keyboard-quit
+
+    Signal a quit condition.
+    During execution of Lisp code, this character causes a quit directly.
+    At top-level, as an editor command, this simply beeps.
+    
+    emacs commands used:
+
+    C-h b To get help for all commands
+    C-s C-g To search for help for key binding of C-g
+
+14. The yank command 'pastes' the most recently killed text.
+
+    emacs commands used:
+    C-h a yank : To search for commands which have the pattern "yank" in their name
+
+15. The dired command in emacs also includes the current and parent directories as . and .. in the
+    list of files. The ls command on the shell does not do this and just lists the files in the
+    listed directory
+
+    Shell commands used:
+    	  $ ls -l /usr/bin
+
+    emacs commands used:
+    	  C-h a dired : To search for command
+	  C-x d /usr/bin : To run command on /usr/bin
+  

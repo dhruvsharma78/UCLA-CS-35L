@@ -1,0 +1,66 @@
+Dhruv Sharma
+605-082-988
+
+Lab
+
+1. Generate file of random floats
+   	    > sizeOfFloat=4
+	    > numberOfFloats=$((2**24))
+	    > size=$(( sizeOfFloat * numberOfFloats))
+	    > od -An -N$size -tfF < /dev/urandom | tr -s ' ' [\\n*] | grep . > floatFile
+
+  This produces a file containing 2^24 floating point numbers
+
+2. Sorting
+   Ensure running version 8.6+
+   By running the sort command with the -g options, values can be sorted
+   By using the --parallel option, we can also define how many threads we want to use
+
+   I ran the command and measured the time taken by default
+     	     	     	 	      	   	 when using 1 thread
+						 when using 2 threads
+						 when using 4 threads
+						 when using 8 threads
+
+
+   Default:
+	time -p sort -g floatFile > /dev/null
+
+	real 38.89
+     	user 209.68
+	sys 0.82
+
+   1 thread:
+	time -p sort -g floatFile --parallel=1 > /dev/null
+
+	real 193.37
+	user 192.88
+	sys 0.47
+
+   2 threads:
+	time -p sort -g floatFile --parallel=2 > /dev/null
+
+	real 101.77          
+	user 194.30
+	sys 0.52
+
+   4 threads:
+	time -p sort -g floatFile --parallel=4 > /dev/null
+
+	real 59.21
+	user 197.31
+	sys 0.62
+
+   8 threads:
+	time -p sort -g floatFile --parallel=8 > /dev/null
+
+	real 38.59
+	user 199.36
+	sys 0.80
+
+
+3. Therefore, we can see that the sort command gets faster with more threads
+
+   Also, the default time is around the same as the one with 8 threads.
+   Therefore, we may assume that by defualt, GNU sort uses 8 threads on this
+   system.

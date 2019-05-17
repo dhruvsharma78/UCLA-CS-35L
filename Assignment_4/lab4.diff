@@ -1,0 +1,35 @@
+diff -u lib/ChangeLog~ lib/ChangeLog
+--- lib/ChangeLog~	2005-11-02 04:16:55.000000000 -0800
++++ lib/ChangeLog	2019-05-01 23:01:59.085748000 -0700
+@@ -1,3 +1,14 @@
++2019-05-01  Dhruv Sharma  <dhruvs@lnxsrv07.seas.ucla.edu>
++
++	* timespec.h (timespec_cmp): Comparison is done using < and >
++	operators instead of subtraction that previously cause underflow
++	errors that produced incorrect results.
++	Function returns 1 if a > b and -1 if a < b. It uses the tv_sec value
++	for this comparison.
++	In case of a tie, the nanoseconds are used to further evaluate.
++	Subtraction is used in this case because since only 8 digits are used
++	for nanoseconds, underflow is impossible.
++
+ 2005-11-01  Paul Eggert  <eggert@cs.ucla.edu>
+ 
+ 	* posixtm.h (PDS_PRE_2000): New macro.
+Common subdirectories: lib/.deps and newLib/.deps
+diff -u lib/timespec.h~ lib/timespec.h
+--- lib/timespec.h~	2005-09-21 23:05:39.000000000 -0700
++++ lib/timespec.h	2019-05-01 23:01:59.078746000 -0700
+@@ -45,8 +45,10 @@
+ static inline int
+ timespec_cmp (struct timespec a, struct timespec b)
+ {
+-  int diff = a.tv_sec - b.tv_sec;
+-  return diff ? diff : a.tv_nsec - b.tv_nsec;
++  if(a.tv_sec < b.tv_sec) return -1;
++  if(a.tv_sec > b.tv_sec) return  1;
++
++  return (a.tv_nsec - b.tv_nsec);
+ }
+ 
+ # if ! HAVE_DECL_NANOSLEEP

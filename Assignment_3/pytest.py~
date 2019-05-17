@@ -1,0 +1,17 @@
+#! /usr/bin/python
+
+
+from optparse import OptionParser
+
+
+def main():
+
+    version_msg = "%prog 1.0"
+    usage_msg   = "option msg..."
+
+    parser = OptionParser(version=version_msg, usage = usage_msg)
+
+
+
+if __name__ == "__main__":
+    main()

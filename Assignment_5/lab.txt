@@ -1,0 +1,175 @@
+Dhruv Sharma
+605-082-988
+
+Steps to make tr programs:
+      1. Recieved arguments
+      	 Checked if 2 arguments recieved and if both of them
+	 have the same number of characters
+	 Also checked if the 'from' string has no duplicates
+
+      2. I used these 2 arrays as a mapping of 'from' to 'to'
+      	 characters. If a character exists at index i in the
+	 'from' array, its translation exists at index i in
+	 the 'to' array.
+
+      3. I then recieved the characters as input using either
+      	 getchar() or read() depending on the implementation
+	 and stopped once I detected an EOF character.
+
+      4. On recieving each character, I checked if the character
+      	 exists in the 'from' array.
+	 If it exists:
+	    Recieve translation from 'to' array using logic
+	    in step 2
+	    Write using putchar() or write()
+	 Else:
+	    Write using putchar() or write()
+
+1. Generated a file with 5,000,000 bytes with:
+   	     head --bytes=5000000 /dev/urandom > largefile
+
+
+2. TESTING tr2b (Buffered):
+
+   a. Writing from file to file
+
+      strace -c ./tr2b 'ABC' 'XYZ' < largefile > output
+
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ----------------
+       49.75    0.000806           1       611           write
+       33.27    0.000539           1       613           read
+        4.63    0.000075          13         6         4 open
+        3.77    0.000061           7         9           mmap
+        2.28    0.000037           9         4         3 stat
+        2.10    0.000034           9         4           mprotect
+        1.30    0.000021           5         4           fstat
+        1.23    0.000020          20         1           munmap
+        0.43    0.000007           4         2           close
+        0.43    0.000007           7         1         1 access
+        0.37    0.000006           6         1           execve
+        0.25    0.000004           4         1           arch_prctl
+        0.19    0.000003           3         1           brk
+      ------ ----------- ----------- --------- --------- ----------------
+      100.00    0.001620                  1258         8 total
+
+   b. Writing from file to terminal
+
+      strace -c ./tr2b 'ABC' 'XYZ' < largefile
+
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ----------------
+       97.30    0.098514           5     20017           write
+        2.44    0.002467           4       613           read
+        0.06    0.000061           7         9           mmap
+        0.06    0.000057          10         6         4 open
+        0.04    0.000041          10         4           mprotect
+        0.04    0.000040          10         4         3 stat
+        0.02    0.000020           5         4           fstat
+        0.01    0.000013          13         1           munmap
+        0.01    0.000009           5         2           close
+        0.01    0.000008           8         1         1 access
+        0.01    0.000007           7         1           execve
+        0.00    0.000004           4         1           brk
+        0.00    0.000004           4         1           arch_prctl
+      ------ ----------- ----------- --------- --------- ----------------
+      100.00    0.101245                 20664         8 total
+
+
+   Observations:
+	1. Writing to a file takes lesser system calls than writing to
+	   the terminal
+
+
+3. Testing tr2u (Unbuffered)
+
+   a. Writing from file to file
+
+      strace -c ./tr2u 'ABC' 'XYZ' < largefile > output
+
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ----------------
+       55.20   25.490679           5   5000000           write
+       44.80   20.691087           4   5000002           read
+        0.00    0.000000           0         6         4 open
+        0.00    0.000000           0         2           close
+        0.00    0.000000           0         4         3 stat
+        0.00    0.000000           0         2           fstat
+        0.00    0.000000           0         7           mmap
+        0.00    0.000000           0         4           mprotect
+        0.00    0.000000           0         1           munmap
+        0.00    0.000000           0         1           brk
+        0.00    0.000000           0         1         1 access
+        0.00    0.000000           0         1           execve
+        0.00    0.000000           0         1           arch_prctl
+      ------ ----------- ----------- --------- --------- ----------------
+      100.00   46.181766              10000032         8 total
+
+   b. Writing from file to terminal
+
+      strace -c ./tr2u 'ABC' 'XYZ' < largefile
+
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ----------------
+       56.33   27.557557           6   5000000           write
+       43.67   21.364541           4   5000002           read
+        0.00    0.000071          18         4         3 stat
+        0.00    0.000062           9         7           mmap
+        0.00    0.000059          10         6         4 open
+        0.00    0.000047          12         4           mprotect
+        0.00    0.000014          14         1           munmap
+        0.00    0.000009           5         2           fstat
+        0.00    0.000009           9         1         1 access
+        0.00    0.000008           4         2           close
+        0.00    0.000004           4         1           arch_prctl
+        0.00    0.000000           0         1           brk
+        0.00    0.000000           0         1           execve
+      ------ ----------- ----------- --------- --------- ----------------
+      100.00   48.922381              10000032         8 total
+
+   Observations:
+	1. The number of system calls is the same when writing to a file
+	   or to a terminal when using an unbuffered system
+
+4. Measuring time taken
+
+   a. tr2b
+
+      1. Writing from file to file
+      	 time ./tr2b 'ABC' 'XYZ' < largefile > output
+
+	 real	0m0.248s
+	 user	0m0.194s
+	 sys	0m0.008s
+
+      2. Writing from file to terminal
+      	 time ./tr2b 'ABC' 'XYZ' < largfile
+
+	 real	0m0.907s
+	 user	0m0.197s
+	 sys	0m0.097s
+
+   b. tr2u
+
+      1. Writing from file to file
+      	 time ./tr2u 'ABC' 'XYZ' < largefile > output
+
+	 real	0m11.316s
+	 user	0m1.399s
+	 sys	0m9.870s
+
+      2. Writing from file to terminal
+      	 time ./tr2u 'ABC' 'XYZ' < largefile
+
+	 real	0m9.854s
+	 user	0m1.395s
+	 sys	0m8.441s
+
+   Observations:
+	1. As a whole, the buffered version runs faster than any unbuffered version
+
+	2. In the buffered version, writing to a file is faster than
+	   writing to the terminal.
+
+	3. In the unbuffered version, writing to the terminal is faster than
+	   writing to a file

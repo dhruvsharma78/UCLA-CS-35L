@@ -1,0 +1,61 @@
+SFROB PERFORMANCE COMPARISONS
+
+1. Number of comparisons
+
+   	   lines  	 number of comparisons
+   	   0		 0
+	   100		 542
+	   10000	 120651
+	   1000000	 18670755
+
+	The number of comparisons is generally around x * ln(x),
+	keeping in line with the bigO of the quicksort algorithm
+
+2. Performance comparisons
+
+   0 lines:
+
+	sfrob	    sfrobu	sfrobs	     sfrobu -f	     sfrobs -f
+real	0m0.002s    0m0.003s	0m0.012s     0m0.003s	     0m0.010s
+user	0m0.001s    0m0.000s	0m0.003s     0m0.000s	     0m0.002s
+sys	0m0.001s    0m0.001s	0m0.005s     0m0.002s	     0m0.007s
+
+   100 lines:
+
+	sfrob	    sfrobu	sfrobs	     sfrobu -f	     sfrobs -f
+real	0m0.003s    0m0.003s	0m0.008s     0m0.006s	     0m0.011s
+user	0m0.000s    0m0.000s	0m0.002s     0m0.000s	     0m0.003s
+sys	0m0.001s    0m0.002s	0m0.006s     0m0.003s	     0m0.006s
+
+   10,000 lines:
+
+	sfrob	    sfrobu	sfrobs	     sfrobu -f	     sfrobs -f
+real	0m0.013s    0m0.091s	0m0.017s     0m0.098s	     0m0.015s
+user	0m0.009s    0m0.015s	0m0.010s     0m0.023s	     0m0.004s
+sys	0m0.002s    0m0.074s	0m0.004s     0m0.074s	     0m0.009s
+
+   1,000,000 lines:
+
+	sfrob	    sfrobu	sfrobs	     sfrobu -f	     sfrobs -f
+real	0m1.879s    0m9.554s	0m1.239s     0m9.990s	     0m1.687s
+user	0m1.120s    0m2.338s	0m0.475s     0m2.882s	     0m0.618s
+sys	0m0.092s    0m7.172s	0m0.096s     0m7.070s	     0m0.092s
+
+
+We can see that the sfrob program is extremely fast as it is unbuffered
+The sfrobu program is significantly slower as it processes data byte by
+byte.
+
+The sfrobs script is slightly faster than sfrob but actually performs
+much faster than sfrob when processing around 1 million lines.
+
+Adding the -f option to sfrobu and sfrobs makes them slightly slower
+due to the extra toupper() call
+
+The programs in terms of speed can be ranked:
+
+1. sfrob
+2. sfrobs (is faster than sfrob for extremely large sets of data)
+3. sfrobs -f
+4. sfrobu
+5. sfrobu f-

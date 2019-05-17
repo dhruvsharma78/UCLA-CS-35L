@@ -1,0 +1,84 @@
+Dhruv Sharma
+605082988
+Lab - Week 2
+  
+1. The tr -c 'A-Za-z' '[\n*]' command removed all characters that arre not upper
+   or lower case letters and replaces them with new lines. This essentially
+   outputs a list of 'words' used in the file/input with each word on a new
+   line. The output also has many blank lines, each symbolizing a non alphabet
+   character. In this case 'words' could be any set of 0 or more continuous
+   letters not interupted by numbers or any other character
+
+2. The tr -cs 'A-Za-z' '[\n*]' command does the same thing as the previous,
+   however, the -s option also squeezes multiple non alphabet characters into
+   one. This thereby converts multiple non alphabet characters into just 1 new
+   line. Therefore we now get a list of words, each on its own line, with no
+   blank lines
+
+3. These results are then piped to the sort command that sorts each line. The
+   sort is done alphabetically due to the set locale. This will output a sorted
+   list of line separated words used in the html file
+
+4. The -u option only outputs unique items. Therefore multiple occurances of the
+   same word are now removed and a list of sorted words is obtained. I found
+   this options meaning on the man page for the sort command.
+
+5. Next, the output is piped to the comm command that compares the list of words
+   to a dictionary. The output is in 3 columns where column 1 is lines (words)
+   unique to word 1 and so basically is just all the words used in the file that
+   are not recognized english words by the dictionary of words provided. Column
+   2 contains words that are in the dictionary but not used in the file.
+   Column 3 iis a list of words that were both in the dictionary and file.
+   Column 3 therefore contains all the valid words used in the html file
+
+6. In this step, the -2 and -3 options are passed to the comm command. This
+   results in columns 2 and 3 not being printed. Therefore the output is just
+   all the words that were used in the html file but not in the dictionary, and
+   therefore just a list of words that are deemed invalid by the dictionary
+
+
+Making the buildwords script:
+
+   1. I used the tr command with the -d option to delete all '?'s and commas
+   2. I used the tr command to convert all okinas to ASCII 's
+   3. I then used the tr command to convert all uppercase characters to
+      lowercase ones
+
+   4. I noticed that in the html file, all the words (English and Hawaiian) are
+      on separate lines, and have the closing </td> HTML tag. So I grabbed
+      those lines using grep
+   5. I then used sed to remove all the tags
+   6. Next, I used sed to get all the odd numbered lines since they had
+      hawaiian words
+   7. Now, I used tr to separate multiple words into new lines
+   8. Now, I used grep to give me only those lines that had valid hawaiian
+      characters
+   9. Now I sorted the list of words and removed blank lines
+
+The HAWAIIANCHECKER command:
+    
+tr -cs "A-Za-z\`" '[\n*]' | tr 'A-Z' 'a-z' | sort -u | comm -23 - hwords
+
+This converts any non ASCII letter or ' to a new lines, therefore separating
+words into individual lines. Then it converts all letters to lowercase and
+sorts this list of words and removes duplicates. Then, the comm command
+with the -23 option produces a list of words that diid not exist in the
+Hawaiian dictionary 'hwords'
+
+Number of words reported as misspelled on webpage by HAWAIIIANCHECKER: 491
+Number of words reported as misspelled on webpage by ENGLISHCHECKER  : 88
+
+To see differences between HAWAIIANCHECKER and ENGLISHCHECKER I ran both
+commands and exported each ones output to a different file and ran the comm
+command on the 2 output files.
+
+Number of words ENGLISHCHECKER reports as misspelled but HAWAIIANCHECKER doesnt:
+       60
+       Examples: wiki
+       		 lau
+       		 
+
+Number of words HAWAIIANCHECKER reports as misspelled but ENGLISHCHECKER doesnt:
+       463
+       Examples: about
+       		 above

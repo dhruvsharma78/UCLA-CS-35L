@@ -1,0 +1,32 @@
+Dhruv Sharma
+605-082-988
+                                                                                *
+Q1. The patch marginally improves the performance of the ls command as it
+    removes an if condition and replaces it with an unconditional assignment.
+    Essentially, it converts a conditional assignment into an unconditional one.
+    This has some extremely marginal performane benefits
+
+Q2. If the company had already noticed this bug and somehow adapted their code
+    to work with it, the patch may cause their code to have unexpected results,
+    since the companys code expects to see the . and .. but now the behavior has
+    changed.
+    There may even be a case where this "wrong" behavior of ls was being used and
+    in that case the patch will cause issues for the company.
+
+Q3. The randline.py script calls the random.choice() function, passing a list of
+    lines in the file as a parameter. The random.choice function then attempts to
+    pick a random element of the list and returns it.
+    The /dev/null file is blank, and therefore the list of lines is blank, and
+    therefore, the random.choice function is unable to index any element as the
+    return seq[int(self.random() * len(seq))] command will fail since
+    len(seq) = 0 and therefore it will try to return seq[0] which is impossible
+    since seq contains nothing.
+
+    This is an indexing error and the script rightly raises an IndexError
+    experience.
+
+Q4. There is an error in the python script when it is run on python3 in the line
+    where the IOError exception is raised. The issue is that in python 2, it was
+    possible to iterate over the parameters given the the exception by iterating
+    over the exception object itself, however, this feature was removed in
+    python 3. The 

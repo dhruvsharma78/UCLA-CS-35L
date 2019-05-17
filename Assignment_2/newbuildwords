@@ -1,0 +1,37 @@
+#! /usr/bin/sh
+
+#Replace ` with '
+sed s:\`:\':g |
+
+
+#Remove all ?
+sed 's/?//g' |
+tr -d ',' |
+
+
+###########################################################################
+
+tr 'A-Z' 'a-z' |
+
+#Keep only <td> tag
+grep '<td>' |
+
+sed 's/<[^>]*>//g' |
+
+#Keep only odd lines
+sed 'n; d' |
+
+#Replace spaces with new lines
+tr -s ' ' '[\n*]' |
+
+#tr '[:upper:]' '[:lower:]' | 
+
+#Keep only hawaiian letters
+grep -vi "[^pk'mnwlhaeiou]" |
+
+
+#Remove blank lines
+grep . |
+
+#Sort
+sort -u  

@@ -1,0 +1,76 @@
+Exercise 1.1
+
+2. C-s H T M L Enter
+3. C-s s c a Enter M-b
+4. C-s s e l f Enter M-b
+5. C-s a r r o w Enter M-b
+6. C-e
+7. C-a
+8. It is faster to move around using M-b to get to the end of a word, C-a and C-e to get to the start
+   and end of lines and using C-s to search for text rather than scroll through the file and look for it
+9. Repeated process without using any arrow keys
+10. C-x C-c
+
+Exercise 1.2
+
+1. C-u 1 7 C-n
+   C-k
+2. C-s < ! Enter C-a C-k
+3. C-s < ! Enter C-a C-k C-k C-k C-k C-k
+4. C-s < ! Enter C-b C-b M-z >
+5. C-s < ! Enter C-a C-u 4 C-k
+   C-s < ! Enter C-a C-k
+   C-x C-s C-x C-c
+
+Exercise 1.3
+
+2. M-% A s s i g n m e n t SP 1 Enter A s s i g n m e n t SP 4 2 Enter y y C-g
+3. M-< M-% U T F - 8 Enter U S - A S C I I Enter y C-g
+4. C-M-s [ ^ [ : a s c i i : ] ] Enter C-a C-k C-M-s C-M-s
+5. M-< C-s < / o Enter C-e Enter
+6. C-x C-s C-x C-c
+
+Exercise 1.4
+
+3. M-> C-r - < Enter C-f C-SP C-e M-w C-u 411 M-g M-g C-y
+   M-> C-r C-r C-r C-r C-r C-r Enter C-f C-SP C-n C-n C-n C-n C-e M-w C-u 396 M-g M-g C-k C-u 2 C-y C-a C-d C-p C-d C-p C-d C-p C-d
+   M-> C-r @ @ SP - C-r C-r Enter C-n C-n C-n C-n C-f C-SP C-n C-n C-e M-w C-u 352 M-g M-g C-y C-a C-d C-p C-d
+   M-> C-r @ @ SP - 1 Enter C-n C-n C-n C-n C-f C-SP C-e M-w C-u 127 M-g M-g C-y
+   M-> C-r L a b Enter C-n C-n C-a C-f C-SP C-e M-w C-u 18 M-g M-g C-y
+5. C-s - - - SP e x e r C-a C-SP M-> Backspace
+6. C--
+7. M-> - - > C-r - - - SP e x Enter < ! - - Enter
+8. M-< M-% < o l > Enter < o L > Enter y y y y y C-g
+9. C-x C-s C-x C-c
+
+Exercise 1.5
+
+1. M-x m a k e - d TAB Enter j u n k Enter
+2. C-x C-f j u n k / h e l l o . c Enter
+   // Entered program and saved C-x C-s
+3. M-x c o m p i l e Enter C-a C-k m a k e SP h e l l o Enter
+4. C-x b h e l l o - o u t Enter
+   C-u M-! . / h e l l o
+5. C-SP M-> M-w C-x b k e y 1 . t x t Enter M-> C-y
+   Contents of buffer:
+   EOF on input
+
+Exercise 1.6
+
+1. C-x b * s c r TAB Enter
+2. ( r a n d o m SP " 6 0 5 - 0 8 2 - 9 8 8 " ) C-j
+3. ( s e t q SP x ( r a n d o m ) ) C-j
+   ( s e t q SP y ( r a n d o m ) ) C-j
+4. ( * SP x SP y ) C-j
+   The product is given as 312905258184158058 which is definitely wrong as the values of x and y were both
+   much larger than this value
+5. M-: ( * SP x SP y ) Enter
+   This produces the same answer, but also gives it in octal and hex form
+6. The numbers produced by the random function are not truly random but rather pseudorandom
+   The function uses seeds to generate psuedorandom values in a certain range
+   When no string is provided as a seed, the function uses the systems entropy pool or the time or some
+   volatile defined value to generate a random number. Therefore, these values are not truly random as
+   they can be reproduced easily by replicating seed values.
+7. The product will almost always be wrong becuase the random numbers generated are already 19 digits long while the max value that can
+   be computed on my system by emacs is 2^61 -1. So therefore, when the numbers are multiplied, there will almost always be an overflow.
+   The product is only correct when the values are sufficiently small enough that the product is not bigger than 2^61 -1.

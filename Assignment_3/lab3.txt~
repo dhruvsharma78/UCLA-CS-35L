@@ -1,0 +1,30 @@
+Dhruv Sharma
+605-082-988
+
+Lab.
+                                                                                **
+  1. On running /usr/bin/ls with the options -a, -A and both -a -A, I found that
+     the 'bug' still exists. The -A option DOES NOT override a previous -a
+     option.
+
+  2. By running the man command on /usr/bin/ls, I found that the ls version
+     installed at usr/bin/ls corresponds to GNU coreutils 8.22 .
+
+  3. I downloaded the Coreutils 8.29 source tarball using the wget command and
+     obtained the coreutils-8.29.tar.xz file
+     Using the wget command I downloaded the signature file for coreutils
+     and also the gnu-keyring
+
+  4. Using the gpg command, I attempted to verify the signature. The command says
+     that the signature is good. However it also says that there is no indication
+     that this particular key belongs to the owner (user).
+
+  5. I then ran the ./configure file with the --prefix flag to a new directory
+     in the home directory. Then I ran the make command to compile, and then the
+     make install command to install the coreutils package. I didnt run into any
+     issues with this command
+
+  6. On running the version of ls that has just been installed, I was able to
+     reproduce the bug. On running ls -a -A, the . and .. would still be
+     displayed.
+     
