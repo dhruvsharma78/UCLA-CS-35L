@@ -1,0 +1,103 @@
+Dhruv Sharma
+605-082-988
+
+1. I downloaded the simpgmp.c file using wget
+
+2. Compiled program using
+      gcc -o simpgmp simpgmp.c -lgmp
+
+3. On examining the program, I found it prints the value of
+   2^x where x is the argument passed in
+
+4. Therefore, to compute 2**24, I ran:
+      ./simpgmp 24
+   I verified this result using a regular calculator
+
+5. To compute, 2**(2**24), I ran:
+      ./simpgmp $((2**24))
+
+      To confirm that this result was accurate:
+
+      a. I piped the result to head -c 4 to get the first
+      	 4 numbers which were 1818
+      b. I piped the result to tail -c 5 to get the last
+      	 4 numbers (5 bytes in order to account for the
+	 extra new line)
+
+6. ldd ./simpgmp to get the dynamic libraries:
+
+       linux-vdso.so.1 =>  (0x00007ffc54ff4000)
+       libgmp.so.10 => /lib64/libgmp.so.10 (0x00007f2e5cdb7000)
+       libc.so.6 => /lib64/libc.so.6 (0x00007f2e5c9ea000)
+       /lib64/ld-linux-x86-64.so.2 (0x00007f2e5d02f000)
+
+7. strace to find the system calls
+
+   % time     seconds  usecs/call     calls    errors syscall
+   ------ ----------- ----------- --------- --------- ----------------
+     0.00    0.000000           0         2           read
+     0.00    0.000000           0         1           write
+     0.00    0.000000           0         8         5 open
+     0.00    0.000000           0         3           close
+     0.00    0.000000           0         4         3 stat
+     0.00    0.000000           0         3           fstat
+     0.00    0.000000           0         9           mmap
+     0.00    0.000000           0         6           mprotect
+     0.00    0.000000           0         1           munmap
+     0.00    0.000000           0         1           brk
+     0.00    0.000000           0         1         1 access
+     0.00    0.000000           0         1           execve
+     0.00    0.000000           0         1           arch_prctl
+   ------ ----------- ----------- --------- --------- ----------------
+   100.00    0.000000                    41         9 total
+
+   Important syscalls:
+   	     a. The open calls open the dynamic libraries
+	     b. calls to mmap link the library in memory to the program
+	     c. The read calls read the contents
+	     d. The close calls close the library
+
+8. Run $ ls /usr/bin | awk 'NR%101==605082988%101' to get list of
+   commands to investigate
+
+      akregator
+      c99
+      corelist
+      devdump
+      eu-nm
+      gegl
+      grops
+      hdmv_test
+      iodbctestw
+      kde-open
+      kwrapper4
+      lsblk
+      mount
+      nl-neigh-add
+      oxygen-settings
+      pilconvert.pyc
+      ppdmerge
+      redhat-support-tool
+      sed
+      ssh
+      tcptraceroute
+      urlgrabber
+      xdvi-xaw
+      zforce
+
+9. Run the following to get ldd on each command
+
+      for i in $(ls /usr/bin | awk 'NR%101==605082988%101'); do
+      	  ldd /usr/bin/$i
+      done
+
+10. This generates a list of libraries, however some of the programs
+    aren't dynamic executables or have no execute permissions
+
+      1. c99
+      2. corelist
+      3. pilconvert.pyc
+      4. redhat-support-tool
+      5. tcptraceroute
+      6. urlgrabber
+      7. zforce
