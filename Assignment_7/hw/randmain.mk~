@@ -1,6 +1,0 @@
-randlibhw.so: randlibhw.c
-	$(CC) $(CFLAGS) -o randlibhw.so randlibhw.c -shared -fPIC -c
-randlibsw.so: randlibsw.c
-	$(CC) $(CFLAGS) randlibsw.c -shared -fPIC -c -o randlibsw.so
-randmain: randmain.o randcpuid.o
-	$(CC) $(CFLAGS) randmain.o randcpuid.o -ldl -Wl,-rpath=$(PWD) -o randmain
