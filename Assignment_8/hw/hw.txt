@@ -1,0 +1,38 @@
+Dhruv Sharma
+605 082 988
+
+1. If someone were to observe all bytes being sent between the machines of our team,
+   it would NOT be a concern and the network will still be secure.
+   The initial setup is done by exchanging the 2 public keys and verifying the fingerprints.
+   Once this process succeeds, the rest of the session is encrypted with a common session key
+   which is not publicly released. Since no one else on the network has access to any of the
+   private keys, or even the session key, observing the bytes is useless.
+
+   1. If the other teams had tapped the keyboards, there would be an issue since they would have
+      the login password used to log into the server. This would allow them to access the server
+      from any device, as long as the password remained unchanged.
+
+   2. If we were to boot off a USB and the other teams were to get control of the USB and log in
+      as root, there would be a major issue as they could access all users' .ssh/ directories and
+      get all the private keys stored there. This would compromise any future communications and
+      even give them the ability to decrpyt previously intercepted encrypted messages.
+
+2. The gpg2 --verify command doesn't verify that I personally created the eeprom file.
+   The command only verifies that the hash of the file matches the hash I have provided in the
+   eeprom.sig file. If someone were to change the file and rehash it with another key and change the
+   eeprom.sig file, we would still get the output 'Good Signature' as the hashes match.
+
+   To fix this issue, the reciever of the file must also have the public key of whoever had signed
+   the file in the first place. This key must be stored and trusted (we must be absolutely sure that
+   this public key belongs to the person we recieve files from). If we have that key, we can know for sure
+   if the file was signed by them. If the hacker signs the file with a different key, the file and signature will
+   still match, but we would know that it was signed by someone other than the creator since the key used to sign
+   it is not the one we trust.
+
+   Another solution is to trust a 3rd party with keeping track of all the public keys of the people in an
+   organization. We can then, on verification of a signature, compare the signing public key with the public key
+   of the person we think we recieved the file from. If the keyss match, we can be sure that the file was made
+   by who we think it was made by.
+   Again, even with this solution, we have to assume that the 3rd party storing the keys is itself secure and not
+   compromised. If that database of keys were to be hacked and keys were to be changed, this whole idea falls apart.
+ 
