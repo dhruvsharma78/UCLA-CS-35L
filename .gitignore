@@ -1,0 +1,19 @@
+
+# Ignore Backup
+Backup/
+
+# ignore anything with coreutils
+**/*coreutils*
+
+# ignore anything called install
+**/install/
+
+**/*.gpg
+
+**/testFiles/
+
+**/*.tgz
+
+/Assignment_6/lab/floatFile
+
+*~
