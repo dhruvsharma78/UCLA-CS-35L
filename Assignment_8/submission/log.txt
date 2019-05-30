@@ -24,7 +24,7 @@ Dhruv Sharma
 	    Set password as "123"
 
 	 4. Navigated to home directory for new user and set up ssh directory to place keys in for
-	    authentication
+	    authentication. Also gave read/write/execute permission to the user for the directory
 	    $ cd /home/nico
 	    $ sudo mkdir .ssh
 	    $ sudo chown -R nico .ssh
@@ -49,13 +49,13 @@ Dhruv Sharma
 	 2. The same public/private keypair is used to setup communication between my partners server
 
 	 3. Copy public key to server
-	    $ ssh-copy-id -i dhruv@<server-ip>
+	    $ ssh-copy-id -i dhruv@<server-ip> (<server-ip> was replaced by the actual ip address of the beaglebone)
 
-	 5. Add keys to server
+	 5. Add keys to server ssh-agent
 	    $ ssh-add
 
 	 6. Connect to server
-	    $ ssh -X dhruv@<server-ip>
+	    $ ssh -X dhruv@<server-ip> (<server-ip> was replaced by the actual ip address of the beaglebone)
 
 	 7. Ran commands like xeyes and gedit to make sure X-forwarding works
 

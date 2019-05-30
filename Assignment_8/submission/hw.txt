@@ -20,9 +20,11 @@ Dhruv Sharma
 2. The gpg2 --verify command doesn't verify that I personally created the eeprom file.
    The command only verifies that the hash of the file matches the hash I have provided in the
    eeprom.sig file. If someone were to change the file and rehash it with another key and change the
-   eeprom.sig file, we would still get the output 'Good Signature' as the hashes match.
+   eeprom.sig file, we would still get the output 'Good Signature' as the hashes match. However, we would
+   be able to see the fingerprint of the public key used to sign the file and we should compare that to the
+   public key that we believe should have been the one signing the file.
 
-   To fix this issue, the reciever of the file must also have the public key of whoever had signed
+   To fix this issue, the reciever of the file must also have the public key or fingerprint of whoever had signed
    the file in the first place. This key must be stored and trusted (we must be absolutely sure that
    this public key belongs to the person we recieve files from). If we have that key, we can know for sure
    if the file was signed by them. If the hacker signs the file with a different key, the file and signature will
@@ -31,7 +33,7 @@ Dhruv Sharma
 
    Another solution is to trust a 3rd party with keeping track of all the public keys of the people in an
    organization. We can then, on verification of a signature, compare the signing public key with the public key
-   of the person we think we recieved the file from. If the keyss match, we can be sure that the file was made
+   of the person we think we recieved the file from. If the keys match, we can be sure that the file was made
    by who we think it was made by.
    Again, even with this solution, we have to assume that the 3rd party storing the keys is itself secure and not
    compromised. If that database of keys were to be hacked and keys were to be changed, this whole idea falls apart.
